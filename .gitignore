@@ -1,3 +1,14 @@
+.vscode/
+backup/
+kakao_token.json
+
+# 토큰 제거 하고 올리기
+slack_bot.py
+exchange_rate.py
+my_email.py
+naver_search.py
+kakao.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
