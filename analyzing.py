@@ -196,26 +196,26 @@ def analyzeStock(code):
         writer.save()
         writer.close()
 
-        # 알림 보내기
-        if isCodeExist(code,'recommendedList.csv') == False:
-            print('메일')
-            # 카톡보내기
-            # kakao.send_to_kakao('새로운 종목이 감지 되었습니다. \n {}({}) {:.0f}(원) \n {}'.format(company_name,code,now_price,url))
+        # # 알림 보내기
+        # if isCodeExist(code,'recommendedList.csv') == False:
+        #     print('메일')
+        #     # 카톡보내기
+        #     # kakao.send_to_kakao('새로운 종목이 감지 되었습니다. \n {}({}) {:.0f}(원) \n {}'.format(company_name,code,now_price,url))
             
-            # 메일 보내기
-            str_subject = '새로운 종목이 감지 되었습니다.'
+        #     # 메일 보내기
+        #     str_subject = '새로운 종목이 감지 되었습니다.'
             
-            str_text = '{}({}) {:.0f}(원) \n {} \n\n'.format(company_name,code,now_price,url)
-            reason = ', '.join(analyzeResult[1:].tolist())
-            str_text = str_text + 'score = {} \n{}\n\n'.format(score,str(reason))
-            str_text = str_text + '현재 시가총액 = {} 억원\n적정 시가총액 = {:.0f} 억원\n\n'.format(market_value,expectationProfit*10)
-            str_text = str_text + '현재 주가 = {:.0f} 원\n적정 주가 = {:.0f} 원\n\n'.format(now_price,proper_price)
-            str_text = str_text + '주당배당금 = {} 원\n'.format(' 원, '.join(annual_finance.iloc[13,0:3].tolist()))
-            str_text = str_text + '평균 = {:.0f} 원\n배당수익률 {:.1f}%\n'.format(average_dividend, rate_dividend )
-            str_text = str_text + '현재 배당금에 대한 목표주가 = {:.0f} 원\n평균 배당금에 대한 목표주가 = {:.0f} 원\n'.format(target_price_by_dividend, target_price_by_avg_dividend )
+        #     str_text = '{}({}) {:.0f}(원) \n {} \n\n'.format(company_name,code,now_price,url)
+        #     reason = ', '.join(analyzeResult[1:].tolist())
+        #     str_text = str_text + 'score = {} \n{}\n\n'.format(score,str(reason))
+        #     str_text = str_text + '현재 시가총액 = {} 억원\n적정 시가총액 = {:.0f} 억원\n\n'.format(market_value,expectationProfit*10)
+        #     str_text = str_text + '현재 주가 = {:.0f} 원\n적정 주가 = {:.0f} 원\n\n'.format(now_price,proper_price)
+        #     str_text = str_text + '주당배당금 = {} 원\n'.format(' 원, '.join(annual_finance.iloc[13,0:3].tolist()))
+        #     str_text = str_text + '평균 = {:.0f} 원\n배당수익률 {:.1f}%\n'.format(average_dividend, rate_dividend )
+        #     str_text = str_text + '현재 배당금에 대한 목표주가 = {:.0f} 원\n평균 배당금에 대한 목표주가 = {:.0f} 원\n'.format(target_price_by_dividend, target_price_by_avg_dividend )
 
  
-            my_email.sendEmail(str_subject,str_text)
+        #     my_email.sendEmail(str_subject,str_text)
 
     return analyzeResult
 
