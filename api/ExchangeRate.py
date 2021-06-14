@@ -3,7 +3,7 @@
 import requests 
 from config import key
 
-class exchangeRate:
+class ExchangeRate:
     def __init__(self):
         self.url = "http://data.fixer.io/api/latest"
         self.token = key.FIXER_KEY

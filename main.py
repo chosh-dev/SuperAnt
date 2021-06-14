@@ -1,5 +1,5 @@
 from config import key
-from api.exchange_rate import exchangeRate
+from api.ExchangeRate import ExchangeRate
 
 ## main-------------------------------------------------------------
 if __name__ == '__main__':
@@ -11,6 +11,6 @@ if __name__ == '__main__':
     # import analyzing
 
     #! 환율정보
-    exchangeRateInfo = exchangeRate()
-    print(exchangeRateInfo.updatedMessage())
+    exchangeRate = ExchangeRate()
+    print(exchangeRate.updatedMessage())
 
