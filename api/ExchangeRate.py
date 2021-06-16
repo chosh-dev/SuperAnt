@@ -2,6 +2,7 @@
 # https://fixer.io/documentation
 import requests 
 from config import key
+from .MySQL import DB
 
 class ExchangeRate:
     def __init__(self):
@@ -32,4 +33,15 @@ class ExchangeRate:
         message = message + ("옌 : %.2f 원\n" % self.data["KRW_JPY"])
 
         return message
-         
+    
+    def updateDB(self):
+        self.update()
+
+        db = DB()
+        sql = "INSERT INTO ExchangeRate (KRW_USD, KRW_EUR, KRW_CNY, KRW_JPY) VALUES (%s, %s, %s, %s)"
+        val = (self.data["KRW_USD"],self.data["KRW_EUR"],self.data["KRW_CNY"],self.data["KRW_JPY"])
+        db.cursor.execute(sql,val)
+        db.printLog()
+        
+
+
