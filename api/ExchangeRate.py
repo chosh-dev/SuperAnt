@@ -40,7 +40,8 @@ class ExchangeRate:
         sql = "INSERT INTO ExchangeRate (KRW_USD, KRW_EUR, KRW_CNY, KRW_JPY) VALUES (%s, %s, %s, %s)"
         val = (self.data["KRW_USD"],self.data["KRW_EUR"],self.data["KRW_CNY"],self.data["KRW_JPY"])
         db.cursor.execute(sql,val)
-        db.db.commit()
+        db.commit()
+        db.close()
         print(sql,val)
         
     def updateDB(self):
@@ -50,6 +51,7 @@ class ExchangeRate:
         """
         db.cursor.execute(sql)
         db.commit()
+        db.close()
         print(sql)
 
 

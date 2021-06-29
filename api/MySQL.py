@@ -28,4 +28,7 @@ class DB:
     def createTable(self,model):
         create_movies_table_query = "CREATE TABLE " + model
         self.cursor.execute(create_movies_table_query)
-    
+        
+    def close(self):
+        self.cursor.close()
+        self.db.close()

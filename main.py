@@ -1,5 +1,9 @@
 from config import key
 from api.ExchangeRate import ExchangeRate
+from api.MySQL import DB    
+from model.ExchangeRate import ExchangeRateModel
+from model.StockInfo import StockInfoModel
+from crawler.StockInfo import StockInfo
 
 ## main-------------------------------------------------------------
 if __name__ == '__main__':
@@ -11,6 +15,16 @@ if __name__ == '__main__':
     # import analyzing
 
     #! 환율정보
-    exchangeRate = ExchangeRate()
-    print(exchangeRate.updatedMessage())
+    # exchangeRate = ExchangeRate()
+    # exchangeRate.updateDB()
+
+    #! 주식 정보
+    stockInfo = StockInfo()
+    stockInfo.updateDB()
+
+    #! table 생성
+    # DB = DB()
+    # DB.createTable(ExchangeRateModel)
+    # DB.createTable(StockInfoModel)
+    # DB.printLog()
 
