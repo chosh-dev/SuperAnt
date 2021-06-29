@@ -14,6 +14,9 @@ class DB:
 
         self.cursor = self.db.cursor(pymysql.cursors.DictCursor)
     
+    def commit(self):
+        self.db.commit()
+        
     def printLog(self):
         for log in self.cursor:
             print(log)

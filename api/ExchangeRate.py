@@ -34,14 +34,23 @@ class ExchangeRate:
 
         return message
     
-    def updateDB(self):
+    def insertDB(self):
         self.update()
-
         db = DB()
         sql = "INSERT INTO ExchangeRate (KRW_USD, KRW_EUR, KRW_CNY, KRW_JPY) VALUES (%s, %s, %s, %s)"
         val = (self.data["KRW_USD"],self.data["KRW_EUR"],self.data["KRW_CNY"],self.data["KRW_JPY"])
         db.cursor.execute(sql,val)
-        db.printLog()
+        db.db.commit()
+        print(sql,val)
         
+    def updateDB(self):
+        self.update()
+        db = DB()
+        sql = f"""UPDATE ExchangeRate SET KRW_USD={self.data["KRW_USD"]},KRW_EUR={self.data["KRW_EUR"]},KRW_CNY={self.data["KRW_CNY"]},KRW_JPY={self.data["KRW_JPY"]}
+        """
+        db.cursor.execute(sql)
+        db.commit()
+        print(sql)
+
 
 
